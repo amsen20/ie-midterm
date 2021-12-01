@@ -3,30 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="css/page.css" rel="stylesheet">
+    <script type="text/javascript" src="js/script.js" defer></script>
 </head>
 <body>
-    <div>
+    <div class="container">
         <div>
             <div class="titles">Mr. or Ms.? </div>
-            <label for="name">Name: </label>
-            <input type="text" id="name" name="name">
-            <input type="radio" id="male" name="Gender" value="Male">
-            <label for="male">Male</label>
-            <input type="radio" id="female" name="Gender" value="Female">
-            <label for="female">Female</label>
-            <input type="submit" value="Submit">
+            <form name="gender-form">
+                <div>
+                    <label for="name">Name: </label>
+                    <input type="text" id="name" name="Name">
+                </div>
+                <div>
+                    <input type="radio" id="male" name="Gender" value="Male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="Gender" value="Female">
+                    <label for="female">Female</label>
+                    <button id="clearRadio">Clear options</button>
+                </div>
+                <div>
+                    <input id="submit" type="submit" value="Submit">
+                    <input id="save" type="submit" value="Save">
+                </div>
+            </form>
         </div>
         <div>
             <div>
                 <div class="titles">Prediction: </div>
                 <div id="prediction-result">
-                    Please submit!
                 </div>
             </div>
             <div>
                 <div class="titles">Saved answer: </div>
-                <div id="saved-answer"></div>
-                <button id="clear">Clear</button>
+                <div id="saved-answer">Nothing!</div>
+                <button id="clear" disabled>Clear</button>
             </div>
         </div>
     </div>
