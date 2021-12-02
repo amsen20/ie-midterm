@@ -1,8 +1,10 @@
+/* Fullscreen body and html in order to display content in middle of it. */
 body, html {
     height: 100%;
     width: 100%;
 }
 
+/* Setting body background image and set properties in order to display content in middle of it. */
 body {
     justify-content: center;
     background-image: url("../images/img.jpeg");
@@ -15,11 +17,15 @@ body {
 
 }
 
+/* All buttons should have some distance from upper element and also same width. */
 button {
     margin-top: 10px;
     width: 100px;
 }
 
+/* Container which is the main content container, should be transparent.
+ * Also should its content in middle of it and flexible.
+ */
 .container {
     background-color: lightblue;
     opacity:0.9;
@@ -31,6 +37,7 @@ button {
     vertical-align: center;
 }
 
+/* Two sections (form and results), they should display contents from up to bottom. */
 .section {
     display: flex;
     flex-direction: column;
@@ -38,34 +45,41 @@ button {
     top: 0;
 }
 
+/* All titles are bold and has large size font. */
 .titles {
     font-weight: bold;
     font-size: xx-large;
 }
 
+/* Inner items in sections (form, predicted result and saved answer).
+ * They also should display contents from up to bottom.
+*/
 .inner {
     display: flex;
     flex-direction: column;
-    border: black;
     margin-top: 20px;
 }
 
+/* Each option should keep 10px distance from its upper element. */
 .option {
     display: flex;
     margin-top: 10px;
 }
 
+/* Buttons keeper should display them in middle of it. */
 .buttons {
     display: flex;
     justify-content: center;
 }
 
+/* Options should display them in middle from up to botton. */
 #options {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
 }
 
+/* Submit and save buttons properties. */
 #submit, #save {
     margin-top: 10px;
     width: 100px;
@@ -73,6 +87,7 @@ button {
     margin-right: 10px;
 }
 
+/* Error should be displayed in bottom left, red. */
 #error {
     background-color: red;
     font-weight: bold;
@@ -84,4 +99,5 @@ button {
     left: 10px;
     bottom: 10px;
     visibility: hidden;
+    border-radius: 10px;
 }
