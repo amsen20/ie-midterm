@@ -1,3 +1,4 @@
+// Storing all elements in constants to access them easier.
 const resultElm = document.getElementById("prediction-result");
 const savedAnsElm = document.getElementById("saved-answer");
 const errorElm = document.getElementById("error");
@@ -9,11 +10,14 @@ const clearRadioBtn = document.getElementById("clearRadio");
 
 const RadioElms = document.getElementsByName("Gender");
 
+// Accepted regex for name.
 const regex = /^[a-z ]+$/;
 const isNameValid = regex.test.bind(regex);
 
+// Error's timeout for displaying the error box.
 let timeOutId;
 
+// Whenever an error occurs, this function with error's message (msg) is called.
 const notifyError = (msg) => {
     if(timeOutId)
         clearTimeout(timeOutId);
@@ -25,11 +29,14 @@ const notifyError = (msg) => {
     console.log(msg);
 };
 
+// This function modifies result for prediction.
 const modifyRes = (gender, prob) => {
     resultElm.innerText = gender + "\n" + prob;
 };
 
+// Last loaded name from local storage, it helps in clear function.
 let loadedKey = '';
+// This function checks if name is in storage or not, if it is, this function will display the answer.
 const checkStorage = (name) => {
     const value = window.localStorage.getItem(name);
     if (! value) {
@@ -42,6 +49,7 @@ const checkStorage = (name) => {
     savedAnsElm.innerText = value;
 };
 
+// This function sets name to its argument then is will send a request and call for storage related functions.
 const setName = (name) => {
     resultElm.innerText = '';
     checkStorage(name);
@@ -61,11 +69,13 @@ const setName = (name) => {
         });
 };
 
+// Saves name in local storage and then display it using checkStorage function.
 const saveName = (name, value) => {
     window.localStorage.setItem(name, value);
     checkStorage(name);
 };
 
+// A wrapper function for checking if name is accepted or not and preventing defaults.
 const getNameOrError = (e, func) => {
     e.preventDefault();
     const name = document.forms['gender-form']['Name'].value;
@@ -75,18 +85,19 @@ const getNameOrError = (e, func) => {
         return func(name);
 };
 
-submitBtn.onclick = (e) => getNameOrError(e, (name) => {
-    console.log("salam");
-    setName(name);
-});
+// Submit form button onclick event.
+submitBtn.onclick = (e) => getNameOrError(e, setName);
 
+// Save button onclick event.
+// in order to save gender for a name, priority is selected gender by user.
+// if user doesn't choose a gender, predicted value(if exists) is saved.
 saveBtn.onclick = (e) => getNameOrError(e, (name) => {
     const radioVal = document.forms['gender-form']['Gender'].value;
         if (radioVal) {
             saveName(name, radioVal);
             return;
         }
-    if(! resultElm.innerText) {
+    if(! resultElm.innerText || resultElm.innerText === 'Please Submit!') {
         notifyError("Please submit or choose a gender!");
         return;
     }
@@ -94,12 +105,14 @@ saveBtn.onclick = (e) => getNameOrError(e, (name) => {
 
 });
 
+// Clears options if any checked.
 clearRadioBtn.onclick = (e) => {
     e.preventDefault();
     for (const radioElm of RadioElms)
         radioElm.checked = false;
 };
 
+// Clears saved name (if exists).
 clearBtn.onclick = (e) => {
     console.log(loadedKey);
     if(loadedKey)
