@@ -25,6 +25,7 @@ const notifyError = (msg) => {
     errorElm.style.visibility = 'visible';
     timeOutId = setTimeout(() => {
         errorElm.style.visibility = 'hidden';
+        timeOutId = null;
     }, 3000);
     console.log(msg);
 };
