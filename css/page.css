@@ -72,3 +72,16 @@ button {
     margin-left: 10px;
     margin-right: 10px;
 }
+
+#error {
+    background-color: red;
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+    padding: 10px;
+    justify-content: center;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    visibility: hidden;
+}

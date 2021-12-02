@@ -1,5 +1,6 @@
 const resultElm = document.getElementById("prediction-result");
 const savedAnsElm = document.getElementById("saved-answer");
+const errorElm = document.getElementById("error");
 
 const submitBtn = document.getElementById("submit");
 const saveBtn = document.getElementById("save");
@@ -8,10 +9,21 @@ const clearRadioBtn = document.getElementById("clearRadio");
 
 const RadioElms = document.getElementsByName("Gender");
 
-const regex = /^[a-z ]+$/;
+const regex = /^[a-z ][a-z ]+$/;
 const isNameValid = regex.test.bind(regex);
 
-const notifyError = (msg) => {console.log(msg)};
+let timeOutId;
+
+const notifyError = (msg) => {
+    if(timeOutId)
+        clearTimeout(timeOutId);
+    errorElm.innerText = msg;
+    errorElm.style.visibility = 'visible';
+    timeOutId = setTimeout(() => {
+        errorElm.style.visibility = 'hidden';
+    }, 3000);
+    console.log(msg);
+};
 
 const modifyRes = (gender, prob) => {
     resultElm.innerText = gender + "\n" + prob;
@@ -54,7 +66,8 @@ const saveName = (name, value) => {
     checkStorage(name);
 };
 
-const getNameOrError = (func) => {
+const getNameOrError = (e, func) => {
+    e.preventDefault();
     const name = document.forms['gender-form']['Name'].value;
     if(! isNameValid(name))
         notifyError("Name is not valid! (name should be lowercase letters and spaces)");
@@ -62,13 +75,12 @@ const getNameOrError = (func) => {
         return func(name);
 };
 
-submitBtn.onclick = (e) => getNameOrError((name) => {
+submitBtn.onclick = (e) => getNameOrError(e, (name) => {
+    console.log("salam");
     setName(name);
-    e.preventDefault();
 });
 
-saveBtn.onclick = (e) => getNameOrError((name) => {
-    e.preventDefault();
+saveBtn.onclick = (e) => getNameOrError(e, (name) => {
     const radioVal = document.forms['gender-form']['Gender'].value;
         if (radioVal) {
             saveName(name, radioVal);
