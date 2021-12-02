@@ -1,0 +1,74 @@
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    justify-content: center;
+    background-image: url("../images/img.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center;
+    align-self: center;
+    display: flex;
+
+}
+
+button {
+    margin-top: 10px;
+    width: 100px;
+}
+
+.container {
+    background-color: lightblue;
+    opacity:0.9;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 25px;
+    vertical-align: center;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+    top: 0;
+}
+
+.titles {
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.inner {
+    display: flex;
+    flex-direction: column;
+    border: black;
+    margin-top: 20px;
+}
+
+.option {
+    display: flex;
+    margin-top: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+#submit, #save {
+    margin-top: 10px;
+    width: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

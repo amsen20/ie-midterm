@@ -8,34 +8,39 @@
 </head>
 <body>
     <div class="container">
-        <div>
+        <div class="section">
             <div class="titles">Mr. or Ms.? </div>
-            <form name="gender-form">
+            <form name="gender-form" class="inner">
                 <div>
                     <label for="name">Name: </label>
                     <input type="text" id="name" name="Name">
                 </div>
-                <div>
-                    <input type="radio" id="male" name="Gender" value="Male">
-                    <label for="male">Male</label>
-                    <input type="radio" id="female" name="Gender" value="Female">
-                    <label for="female">Female</label>
+                <div id="options">
+                    <div class="option">
+                        <input type="radio" id="male" name="Gender" value="Male">
+                        <label for="male">Male</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="female" name="Gender" value="Female">
+                        <label for="female">Female</label>
+                    </div>
                     <button id="clearRadio">Clear options</button>
                 </div>
-                <div>
+                <div class="buttons">
                     <input id="submit" type="submit" value="Submit">
                     <input id="save" type="submit" value="Save">
                 </div>
             </form>
         </div>
-        <div>
-            <div>
-                <div class="titles">Prediction: </div>
+        <div class="section">
+            <div class="titles">Prediction: </div>
+            <div class="inner">
                 <div id="prediction-result">
+                    Please Submit!
                 </div>
             </div>
-            <div>
-                <div class="titles">Saved answer: </div>
+            <div class="titles">Saved answer: </div>
+            <div class="inner">
                 <div id="saved-answer">Nothing!</div>
                 <button id="clear" disabled>Clear</button>
             </div>
