@@ -9,7 +9,7 @@ const clearRadioBtn = document.getElementById("clearRadio");
 
 const RadioElms = document.getElementsByName("Gender");
 
-const regex = /^[a-z ][a-z ]+$/;
+const regex = /^[a-z ]+$/;
 const isNameValid = regex.test.bind(regex);
 
 let timeOutId;
